@@ -74,21 +74,18 @@ input[value="="] {
   width: 152.5px;
 }
 
-input[value="AC"] {
-  width: 152.5px;
-}
-
-input[type="button"]:hover:not([value="="]) {
-  background-color: rgb(101, 101, 101);
-  color: #fff;
-}
-
-#clear-button {
+input[value="DEL"] {
+  padding: 25px 10px;
   color: #fff;
   background-color: rgb(255, 42, 42);
 }
 
-#reset-button {
+input[type="button"]:hover:not([value="="]):not([value="DEL"]) {
+  background-color: rgb(101, 101, 101);
+  color: #fff;
+}
+
+#clear-button, #reset-button {
   color: #fff;
   background-color: rgb(255, 42, 42);
 }

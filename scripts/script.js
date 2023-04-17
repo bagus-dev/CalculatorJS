@@ -80,6 +80,36 @@ function operatorCount(searchStr) {
   return count
 }
 
+function resetNumber() {
+  if(res.value[res.value.length - 1] !== "+" && res.value[res.value.length - 1] !== "-" && res.value[res.value.length - 1] !== "*" && res.value[res.value.length - 1] !== "/") {
+    let indexPlus = res.value.lastIndexOf("+")
+    let indexMin = res.value.lastIndexOf("-")
+    let indexMultiply = res.value.lastIndexOf("*")
+    let indexDivide = res.value.lastIndexOf("/")
+    let lastIndex = 0
+
+    if(indexPlus > indexMin && indexPlus > indexMultiply && indexPlus > indexDivide) {
+      lastIndex = indexPlus
+    } else if(indexMin > indexPlus && indexMin > indexMultiply && indexMin > indexDivide) {
+      lastIndex = indexMin
+    } else if(indexMultiply > indexPlus && indexMultiply > indexMin && indexMultiply > indexDivide) {
+      lastIndex = indexMultiply
+    } else if(indexDivide > indexPlus && indexDivide > indexMin && indexDivide > indexMultiply) {
+      lastIndex = indexDivide
+    }
+
+    if(lastIndex !== 0) {
+      res.value = res.value.substring(0, lastIndex + 1)
+    }
+  }
+}
+
+function delNumber() {
+  const resultInput = res.value;
+  //remove the last element in the string
+  res.value = resultInput.substring(0, res.value.length - 1);
+}
+
 //adding event handler on the document to handle keyboard inputs
 document.addEventListener("keydown", keyboardInputHandler);
 
